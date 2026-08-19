@@ -6,6 +6,11 @@ from app.database import engine
 from app.models import Base
 from app.routes import auth, mentors, students, applications
 import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+env_path = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
 
 Base.metadata.create_all(bind=engine)
 
