@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student's Leave Form</title>
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; background: #ffffff; }
+        body { font-family: "Times New Roman", Times, serif; color: #000000; }
+        .leave-form { position: relative; width: 1080px; height: 706px; margin: 0 auto; background: #ffffff; overflow: hidden; }
+        .header { position: absolute; top: 30px; left: 0; width: 100%; text-align: center; }
+        .college-name { font-size: 21px; line-height: 24px; font-weight: normal; }
+        .autonomous { margin-top: 0px; font-size: 20px; line-height: 25px; }
+        .department { margin-top: 0px; font-size: 20px; line-height: 25px; }
+        .form-title { margin-top: 0px; font-size: 20px; line-height: 25px; font-weight: bold; }
+        .main-content { position: absolute; top: 164px; left: 126px; width: 780px; font-size: 19px; line-height: 27px; }
+        .form-row { position: relative; height: 27px; white-space: nowrap; }
+        .student-name { position: absolute; left: 0; top: 0; }
+        .year-section { position: absolute; right: 34px; top: 0; }
+        .roll-number { position: absolute; left: 0; top: 27px; }
+        .roll-colon { position: absolute; left: 190px; top: 27px; }
+        .days-applied { position: absolute; left: 0; top: 54px; }
+        .days-colon { position: absolute; left: 260px; top: 54px; }
+        .days-line { position: absolute; left: 266px; top: 70px; width: 112px; border-bottom: 1px solid #000000; }
+        .from-text { position: absolute; left: 382px; top: 54px; }
+        .from-line { position: absolute; left: 438px; top: 70px; width: 130px; border-bottom: 1px solid #000000; }
+        .to-text { position: absolute; left: 574px; top: 54px; }
+        .to-line { position: absolute; left: 629px; top: 70px; width: 126px; border-bottom: 1px solid #000000; }
+        .reason { position: absolute; left: 0; top: 81px; }
+        .reason-colon { position: absolute; left: 260px; top: 81px; }
+        .reason-line { position: absolute; left: 266px; top: 97px; width: 515px; border-bottom: 1px solid #000000; }
+        .leave-availed { position: absolute; left: 0; top: 108px; }
+        .days-absent { position: absolute; left: 0; top: 135px; }
+        .test-absent { position: absolute; left: 0; top: 162px; }
+        .phone-leave { position: absolute; left: 0; top: 189px; }
+        .signature-section { position: absolute; top: 420px; left: 126px; width: 780px; font-size: 19px; line-height: 24px; }
+        .student-signature { position: absolute; left: 0; top: 0; }
+        .parent-signature { position: absolute; right: 0; top: 0; }
+        .approval-section { position: absolute; top: 517px; left: 126px; width: 780px; font-size: 19px; line-height: 24px; }
+        .mentor-section { position: absolute; left: 0; top: 0; }
+        .mentor-name { margin-top: 6px; margin-left: 28px; }
+        .class-section { position: absolute; right: 0; top: 0; }
+        .class-name { margin-top: 6px; margin-left: 60px; }
+        .bottom-section { position: absolute; top: 646px; left: 126px; width: 780px; font-size: 19px; line-height: 24px; }
+        .hod-section { position: absolute; left: 0; top: 0; }
+        .hod-name { margin-top: 6px; margin-left: 0; }
+        .principal { position: absolute; right: 0; top: 0; font-weight: bold; }
+        @media print {
+            @page { size: 1080px 706px; margin: 0; }
+            html, body { width: 1080px; height: 706px; margin: 0; padding: 0; background: #ffffff; }
+            .leave-form { width: 1080px; height: 706px; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="leave-form">
+        <div class="header">
+            <div class="college-name">Velammal College of Engineering and Technology, Madurai</div>
+            <div class="autonomous">(Autonomous)</div>
+            <div class="department">Department of Information Technology</div>
+            <div class="form-title">Student's Leave Form</div>
+        </div>
+        <div class="main-content">
+            <div class="student-name">Name of the Student:</div>
+            <div class="year-section">Year/Section:</div>
+            <div class="roll-number">Roll Number</div>
+            <div class="roll-colon">:</div>
+            <div class="days-applied">Number of Days Applied</div>
+            <div class="days-colon">:</div>
+            <div class="days-line"></div>
+            <div class="from-text">From:</div>
+            <div class="from-line"></div>
+            <div class="to-text">To:</div>
+            <div class="to-line"></div>
+            <div class="reason">Reason for leave</div>
+            <div class="reason-colon">:</div>
+            <div class="reason-line"></div>
+            <div class="leave-availed">Number of days leave availed already:</div>
+            <div class="days-absent">Number of days absent:</div>
+            <div class="test-absent">Number of days absent for test already:</div>
+            <div class="phone-leave">Number of days leave applied through phone (0/1):</div>
+        </div>
+        <div class="signature-section">
+            <div class="student-signature">Signature of Student</div>
+            <div class="parent-signature">Signature of Parent</div>
+        </div>
+        <div class="approval-section">
+            <div class="mentor-section">
+                <div>Name and Signature of Mentor</div>
+                <div class="mentor-name">Mrs. A. Periya Nayaki</div>
+            </div>
+            <div class="class-section">
+                <div>Name and Signature of Class Incharge</div>
+                <div class="class-name">Mrs. A. Periya Nayaki</div>
+            </div>
+        </div>
+        <div class="bottom-section">
+            <div class="hod-section">
+                <div>HoD/IT</div>
+                <div class="hod-name">Dr. R.Kavitha, Prof & Head/IT</div>
+            </div>
+            <div class="principal">Principal</div>
+        </div>
+    </div>
+</body>
+</html>

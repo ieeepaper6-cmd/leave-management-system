@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student's Leave Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: white;
+            font-family: "Times New Roman", Times, serif;
+            color: #000;
+        }
+
+        .page {
+            width: 1080px;
+            height: 706px;
+            margin: 0 auto;
+            position: relative;
+            background: #fff;
+            border-top: 1px solid #000;
+            overflow: hidden;
+        }
+
+        /* ================= HEADER ================= */
+
+        .header {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .college-name {
+            font-size: 22px;
+            line-height: 24px;
+            font-weight: normal;
+        }
+
+        .autonomous {
+            font-size: 21px;
+            line-height: 25px;
+        }
+
+        .department {
+            font-size: 20px;
+            line-height: 25px;
+        }
+
+        .form-title {
+            font-size: 20px;
+            line-height: 25px;
+            font-weight: bold;
+        }
+
+        /* ================= MAIN FORM ================= */
+
+        .form-area {
+            position: absolute;
+            top: 164px;
+            left: 126px;
+            width: 780px;
+            font-size: 19px;
+        }
+
+        .row {
+            height: 28px;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .label {
+            display: inline-block;
+        }
+
+        .colon {
+            display: inline-block;
+            width: 35px;
+            text-align: center;
+        }
+
+        /* Year / Section */
+
+        .year-section {
+            position: absolute;
+            top: 0;
+            right: 35px;
+        }
+
+        /* Roll Number */
+
+        .roll-row .colon {
+            width: 48px;
+        }
+
+        /* Number of Days */
+
+        .days-row .colon {
+            width: 35px;
+        }
+
+        .line {
+            display: inline-block;
+            border-bottom: 1px solid #000;
+            height: 21px;
+            vertical-align: bottom;
+        }
+
+        .small-line {
+            width: 110px;
+        }
+
+        .date-line {
+            width: 130px;
+        }
+
+        .reason-line {
+            width: 515px;
+        }
+
+        /* Leave details */
+
+        .leave-details {
+            margin-top: 1px;
+        }
+
+        .detail-row {
+            height: 27px;
+        }
+
+        /* ================= SIGNATURE SECTION ================= */
+
+        .signature-section {
+            position: absolute;
+            top: 420px;
+            left: 126px;
+            width: 780px;
+            font-size: 19px;
+        }
+
+        .signature-left {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .signature-right {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        /* ================= MENTOR SECTION ================= */
+
+        .mentor-section {
+            position: absolute;
+            top: 518px;
+            left: 126px;
+            width: 780px;
+            font-size: 19px;
+        }
+
+        .mentor {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .class-incharge {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .mentor-name {
+            margin-top: 8px;
+            margin-left: 28px;
+        }
+
+        .incharge-name {
+            margin-top: 8px;
+            margin-left: 60px;
+        }
+
+        /* ================= BOTTOM SECTION ================= */
+
+        .bottom-section {
+            position: absolute;
+            top: 646px;
+            left: 176px;
+            width: 730px;
+            font-size: 19px;
+        }
+
+        .hod {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .principal {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+        .hod-name {
+            margin-top: 8px;
+            margin-left: -18px;
+        }
+
+        /* ================= PRINT ================= */
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .page {
+                margin: 0;
+                width: 1080px;
+                height: 706px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <div class="college-name">
+            Velammal College of Engineering and Technology, Madurai
+        </div>
+
+        <div class="autonomous">
+            (Autonomous)
+        </div>
+
+        <div class="department">
+            Department of Information Technology
+        </div>
+
+        <div class="form-title">
+            Student's Leave Form
+        </div>
+
+    </div>
+
+
+    <!-- MAIN FORM -->
+    <div class="form-area">
+
+        <!-- Name + Year -->
+        <div class="row">
+            <span class="label">Name of the Student:</span>
+
+            <span class="year-section">
+                Year/Section:
+            </span>
+        </div>
+
+
+        <!-- Roll Number -->
+        <div class="row roll-row">
+            <span class="label">Roll Number</span>
+            <span class="colon">:</span>
+        </div>
+
+
+        <!-- Number of Days Applied -->
+        <div class="row days-row">
+
+            <span class="label">Number of Days Applied</span>
+            <span class="colon">:</span>
+
+            <span class="line small-line"></span>
+
+            <span style="margin-left: 4px;">From:</span>
+
+            <span class="line date-line"></span>
+
+            <span style="margin-left: 4px;">To:</span>
+
+            <span class="line date-line"></span>
+
+        </div>
+
+
+        <!-- Reason -->
+        <div class="row">
+
+            <span class="label">Reason for leave</span>
+
+            <span class="colon">:</span>
+
+            <span class="line reason-line"></span>
+
+        </div>
+
+
+        <!-- Leave Details -->
+        <div class="leave-details">
+
+            <div class="detail-row">
+                Number of days leave availed already:
+            </div>
+
+            <div class="detail-row">
+                Number of days absent:
+            </div>
+
+            <div class="detail-row">
+                Number of days absent for test already:
+            </div>
+
+            <div class="detail-row">
+                Number of days leave applied through phone (0/1):
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STUDENT / PARENT SIGNATURE -->
+    <div class="signature-section">
+
+        <div class="signature-left">
+            Signature of Student
+        </div>
+
+        <div class="signature-right">
+            Signature of Parent
+        </div>
+
+    </div>
+
+
+    <!-- MENTOR / CLASS INCHARGE -->
+    <div class="mentor-section">
+
+        <div class="mentor">
+
+            <div>
+                Name and Signature of Mentor
+            </div>
+
+            <div class="mentor-name">
+                Mrs. P. Saraswathi
+            </div>
+
+        </div>
+
+
+        <div class="class-incharge">
+
+            <div>
+                Name and Signature of Class Incharge
+            </div>
+
+            <div class="incharge-name">
+                Mrs. A. Periya Nayaki
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HOD / PRINCIPAL -->
+    <div class="bottom-section">
+
+        <div class="hod">
+
+            <div>
+                HoD/IT
+            </div>
+
+            <div class="hod-name">
+                Dr. R.Kavitha, Prof &amp; Head/IT
+            </div>
+
+        </div>
+
+
+        <div class="principal">
+            Principal
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
