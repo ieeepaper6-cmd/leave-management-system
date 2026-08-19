@@ -20,6 +20,7 @@ export function AuthProvider({ children }) {
         })
         .catch(() => {
           localStorage.removeItem('token')
+          localStorage.removeItem('refresh_token')
         })
         .finally(() => setLoading(false))
     } else {
@@ -27,16 +28,56 @@ export function AuthProvider({ children }) {
     }
   }, [])
 
+  const refreshAccessToken = async () => {
+    const refresh_token = localStorage.getItem('refresh_token')
+    if (!refresh_token) {
+      throw new Error('No refresh token')
+    }
+    
+    const res = await axios.post(`${API_URL}/auth/refresh`, { refresh_token })
+    const { access_token, refresh_token: new_refresh_token } = res.data
+    localStorage.setItem('token', access_token)
+    localStorage.setItem('refresh_token', new_refresh_token)
+    return access_token
+  }
+
+  useEffect(() => {
+    const interceptor = axios.interceptors.response.use(
+      response => response,
+      async error => {
+        const originalRequest = error.config
+        if (error.response?.status === 401 && !originalRequest._retry) {
+          originalRequest._retry = true
+          try {
+            const newToken = await refreshAccessToken()
+            originalRequest.headers.Authorization = `Bearer ${newToken}`
+            return axios(originalRequest)
+          } catch (refreshError) {
+            localStorage.removeItem('token')
+            localStorage.removeItem('refresh_token')
+            setUser(null)
+            window.location.href = '/login'
+            return Promise.reject(refreshError)
+          }
+        }
+        return Promise.reject(error)
+      }
+    )
+    return () => axios.interceptors.response.eject(interceptor)
+  }, [])
+
   const login = async (username, password) => {
     const res = await axios.post(`${API_URL}/auth/login`, { username, password })
-    const { access_token, user_type, user_id, name } = res.data
+    const { access_token, refresh_token, user_type, user_id, name } = res.data
     localStorage.setItem('token', access_token)
+    localStorage.setItem('refresh_token', refresh_token)
     setUser({ user_type, user_id, name, username })
     return res.data
   }
 
   const logout = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('refresh_token')
     setUser(null)
   }
 

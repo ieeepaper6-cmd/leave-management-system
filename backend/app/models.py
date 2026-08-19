@@ -17,6 +17,8 @@ class Student(Base):
     year = Column(String, nullable=False)
     mentor_id = Column(Integer, ForeignKey("mentors.id"), nullable=True)
     phone_leave_used = Column(Boolean, default=False)
+    failed_login_attempts = Column(Integer, default=0)
+    locked_until = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     mentor = relationship("Mentor", back_populates="students")
@@ -32,6 +34,8 @@ class Mentor(Base):
     password_hash = Column(String, nullable=False)
     department = Column(String, nullable=False)
     class_name = Column(String, nullable=False)
+    failed_login_attempts = Column(Integer, default=0)
+    locked_until = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     students = relationship("Student", back_populates="mentor")

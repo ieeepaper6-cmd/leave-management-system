@@ -26,6 +26,8 @@ class StudentLogin(BaseModel):
 
 class StudentResponse(StudentBase):
     id: int
+    failed_login_attempts: int = 0
+    locked_until: Optional[datetime] = None
     created_at: datetime
 
     class Config:
@@ -50,6 +52,8 @@ class MentorLogin(BaseModel):
 
 class MentorResponse(MentorBase):
     id: int
+    failed_login_attempts: int = 0
+    locked_until: Optional[datetime] = None
     created_at: datetime
 
     class Config:
@@ -94,7 +98,12 @@ class LeaveApplicationResponse(LeaveApplicationBase):
 
 class Token(BaseModel):
     access_token: str
+    refresh_token: str
     token_type: str
     user_type: str
     user_id: int
     name: str
+
+
+class RefreshToken(BaseModel):
+    refresh_token: str
