@@ -83,19 +83,15 @@ def login(login_data: StudentLogin, db: Session = Depends(get_db)):
             headers={"WWW-Authenticate": "Bearer"},
         )
     
-    # Check if account is locked
     if is_account_locked(user):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Account is locked due to multiple failed login attempts. Please try again later."
         )
     
-    # Verify password
     if not verify_password(login_data.password, user.password_hash):
-        # Increment failed login attempts
         user.failed_login_attempts = (user.failed_login_attempts or 0) + 1
         
-        # Lock account after 5 failed attempts
         if user.failed_login_attempts >= 5:
             user.locked_until = datetime.utcnow() + timedelta(minutes=15)
             db.commit()
@@ -111,7 +107,6 @@ def login(login_data: StudentLogin, db: Session = Depends(get_db)):
             headers={"WWW-Authenticate": "Bearer"},
         )
     
-    # Reset failed attempts on successful login
     user.failed_login_attempts = 0
     user.locked_until = None
     db.commit()
